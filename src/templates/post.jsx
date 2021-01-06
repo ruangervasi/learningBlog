@@ -3,15 +3,19 @@ import { graphql, Link } from "gatsby";
 import _ from "lodash";
 import Layout from "../components/Layout";
 import Card from '@material-ui/core/Card';
+import SEO from '../components/SEO/SEO';
 
 export default class Post extends Component {
   render() {
     const { data } = this.props;
-    const { title, tags, date } = data.markdownRemark.frontmatter;
+    const { fields } = data.markdownRemark;
+    const { slug } = fields;
+    const { title, tags, date, description } = data.markdownRemark.frontmatter;
     const { html } = data.markdownRemark;
     return (
       <Layout>
         <Card style={{ backgroundColor: '#FFF', width: '100%', padding: '1.5rem', margin: '10px 15px'}}>
+        <SEO title={title} url={slug} description={description} article />
           <h2 style={{ fontSize: '22px', fontWeight: 'bold' }}>{title}</h2>
           <p>{tags.map(tag => <Link style={{ color: '#000', marginRight: '10px' }} key={tag} to={`/tag/${_.kebabCase(tag)}`}>{tag}</Link>)}</p>
           <p>{date}</p>

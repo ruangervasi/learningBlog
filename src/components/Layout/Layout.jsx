@@ -3,9 +3,16 @@ import Container from '../Container';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import './Layout.css';
+import Helmet from 'react-helmet';
+import config from '../../../data/config';
 
+const favicon = "https://www.pinclipart.com/picdir/big/362-3626324_source-code-icon-logo-coding-png-clipart.png";
 export default ({ children, title }) => (
   <div>
+        <Helmet>
+      <meta name="description" content={config.siteDescription} />
+      <link rel="icon" href={favicon} />
+    </Helmet>
     <Header title={title} />
     <main role="main">
       <Container>

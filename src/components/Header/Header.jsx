@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CodeIcon from '@material-ui/icons/Code';
 import IconButton from '@material-ui/core/IconButton';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: "none",
+    color: "#ffffff"
+  }
 }));
 
 export default function Header() {
@@ -40,11 +44,11 @@ return (
     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
       <CodeIcon />
     </IconButton>
-    
+    <Link to="/" className={classes.link}>
     <Typography variant="h6" className={classes.title}>
           {data.site.siteMetadata.title}
     </Typography>
-    
+    </Link>
   </Toolbar>
 </AppBar>
 </div>

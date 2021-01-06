@@ -3,12 +3,17 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Posts from "../components/Posts";
 import "minireset.css";
+import SEO from "../components/SEO/SEO";
 
 export default class Index extends Component {
   render() {
     const { data } = this.props;
+    const { title, description } = data.markdownRemark.frontmatter;
+    const { fields } = data.markdownRemark;
+    const { slug } = fields;
     return (
       <Layout>
+        <SEO title={title} url={slug} description={description} article />
         <Posts data={data} />
       </Layout>
     );
